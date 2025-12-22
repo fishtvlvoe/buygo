@@ -1,0 +1,25 @@
+{
+	"name": "buygo/plus-one",
+	"description": "BuyGo Plus One Plugin (LINE +1 Ordering)",
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "BuyGo Team",
+			"email": "dev@buygo.me"
+		}
+	],
+	"require": {
+		"php": ">=7.4"
+	},
+	"autoload": {
+		"classmap": [
+			"includes/"
+		]
+	},
+	"config": {
+		"optimize-autoloader": true,
+		"preferred-install": "dist",
+		"sort-packages": true
+	}
+}

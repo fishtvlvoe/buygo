@@ -1,0 +1,29 @@
+
+> buygo-role-permission-admin@1.0.0 build
+> vite build
+
+vite v5.4.21 building for production...
+transforming...
+✓ 4 modules transformed.
+x Build failed in 1.52s
+error during build:
+src/router/index.js (12:7): Identifier "Settings" has already been declared
+file: /Users/fishtv/Local Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/src/router/index.js:12:7
+
+10: import DispatchRules from '../views/DispatchRules.vue';
+11: import ComposeMessage from '../views/ComposeMessage.vue';
+12: import Settings from '../views/Settings.vue';
+           ^
+13: 
+14: // Define routes with metadata for Sidebar/Navigation
+
+    at getRollupError (file:///Users/fishtv/Local%20Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+    at error (file:///Users/fishtv/Local%20Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+    at Module.error (file:///Users/fishtv/Local%20Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/node_modules/rollup/dist/es/shared/node-entry.js:16956:16)
+    at Module.addImport (file:///Users/fishtv/Local%20Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/node_modules/rollup/dist/es/shared/node-entry.js:17527:22)
+    at ImportDeclaration.initialise (file:///Users/fishtv/Local%20Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/node_modules/rollup/dist/es/shared/node-entry.js:13035:28)
+    at convertNode (file:///Users/fishtv/Local%20Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/node_modules/rollup/dist/es/shared/node-entry.js:16352:10)
+    at convertNodeList (file:///Users/fishtv/Local%20Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/node_modules/rollup/dist/es/shared/node-entry.js:16362:38)
+    at Array.program (file:///Users/fishtv/Local%20Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/node_modules/rollup/dist/es/shared/node-entry.js:16212:21)
+    at convertNode (file:///Users/fishtv/Local%20Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/node_modules/rollup/dist/es/shared/node-entry.js:16351:28)
+    at convertProgram (file:///Users/fishtv/Local%20Sites/buygo/app/public/wp-content/plugins/buygo-role-permission/resources/admin/node_modules/rollup/dist/es/shared/node-entry.js:15592:12)
