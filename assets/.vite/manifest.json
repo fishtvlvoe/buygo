@@ -1,0 +1,151 @@
+{
+  "src/layouts/AdminLayout.vue": {
+    "file": "assets/AdminLayout-BR6E14N6.js",
+    "name": "AdminLayout",
+    "src": "src/layouts/AdminLayout.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ]
+  },
+  "src/layouts/PortalLayout.vue": {
+    "file": "assets/PortalLayout-CfY2ETBQ.js",
+    "name": "PortalLayout",
+    "src": "src/layouts/PortalLayout.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ],
+    "css": [
+      "assets/PortalLayout-Dt5kM-rZ.css"
+    ]
+  },
+  "src/main.js": {
+    "file": "assets/main-Ctnj_la1.js",
+    "name": "main",
+    "src": "src/main.js",
+    "isEntry": true,
+    "dynamicImports": [
+      "src/layouts/AdminLayout.vue",
+      "src/layouts/PortalLayout.vue",
+      "src/views/portal/SellerDashboard.vue",
+      "src/views/portal/OrderList.vue",
+      "src/views/portal/ProductList.vue",
+      "src/views/portal/LineBinding.vue",
+      "src/views/portal/SellerApplication.vue",
+      "src/views/portal/ShippingManagement.vue",
+      "src/views/portal/SupplierSettings.vue",
+      "src/views/settings/LineApiSettings.vue",
+      "src/views/settings/CommunityTemplates.vue",
+      "src/views/portal/OrderDetail.vue"
+    ],
+    "css": [
+      "assets/main-gnW_q4qO.css"
+    ]
+  },
+  "src/views/portal/LineBinding.vue": {
+    "file": "assets/LineBinding-pytGkhyN.js",
+    "name": "LineBinding",
+    "src": "src/views/portal/LineBinding.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ],
+    "css": [
+      "assets/LineBinding-D6pUC7B2.css"
+    ]
+  },
+  "src/views/portal/OrderDetail.vue": {
+    "file": "assets/OrderDetail-BPPl-iO5.js",
+    "name": "OrderDetail",
+    "src": "src/views/portal/OrderDetail.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ]
+  },
+  "src/views/portal/OrderList.vue": {
+    "file": "assets/OrderList-DGEgs05b.js",
+    "name": "OrderList",
+    "src": "src/views/portal/OrderList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ],
+    "css": [
+      "assets/OrderList-CujJajVy.css"
+    ]
+  },
+  "src/views/portal/ProductList.vue": {
+    "file": "assets/ProductList-B_8elxd0.js",
+    "name": "ProductList",
+    "src": "src/views/portal/ProductList.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ]
+  },
+  "src/views/portal/SellerApplication.vue": {
+    "file": "assets/SellerApplication-NceS7N8w.js",
+    "name": "SellerApplication",
+    "src": "src/views/portal/SellerApplication.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ],
+    "css": [
+      "assets/SellerApplication-BNDYqxn_.css"
+    ]
+  },
+  "src/views/portal/SellerDashboard.vue": {
+    "file": "assets/SellerDashboard-B9u8eyfl.js",
+    "name": "SellerDashboard",
+    "src": "src/views/portal/SellerDashboard.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ]
+  },
+  "src/views/portal/ShippingManagement.vue": {
+    "file": "assets/ShippingManagement-Bgr7YFZC.js",
+    "name": "ShippingManagement",
+    "src": "src/views/portal/ShippingManagement.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ],
+    "css": [
+      "assets/ShippingManagement-tn0RQdqM.css"
+    ]
+  },
+  "src/views/portal/SupplierSettings.vue": {
+    "file": "assets/SupplierSettings-Cn73rQaU.js",
+    "name": "SupplierSettings",
+    "src": "src/views/portal/SupplierSettings.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ],
+    "css": [
+      "assets/ShippingManagement-tn0RQdqM.css"
+    ]
+  },
+  "src/views/settings/CommunityTemplates.vue": {
+    "file": "assets/CommunityTemplates-DJNKc24V.js",
+    "name": "CommunityTemplates",
+    "src": "src/views/settings/CommunityTemplates.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ]
+  },
+  "src/views/settings/LineApiSettings.vue": {
+    "file": "assets/LineApiSettings-zq2JFEgy.js",
+    "name": "LineApiSettings",
+    "src": "src/views/settings/LineApiSettings.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/main.js"
+    ]
+  }
+}

@@ -5,9 +5,13 @@ yarn-debug.log*
 yarn-error.log*
 
 # Build tools
-.vite/
+# .vite/  # 註解掉這行，讓建置檔案可以被推送
 dist/
 build/
+
+# 但排除開發用的 .vite 快取檔案（保留建置結果）
+.vite/deps/
+.vite/temp/
 
 # Development files
 resources/admin/node_modules/
