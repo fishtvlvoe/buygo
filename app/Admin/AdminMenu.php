@@ -122,8 +122,8 @@ class AdminMenu {
         }
 
         // 除錯資訊（可以在開發完成後移除）
-        error_log('BuyGo Debug: manifest_path = ' . $manifest_path);
-        error_log('BuyGo Debug: file_exists = ' . (file_exists($manifest_path) ? 'true' : 'false'));
+        // error_log('BuyGo Debug: manifest_path = ' . $manifest_path);
+        // error_log('BuyGo Debug: file_exists = ' . (file_exists($manifest_path) ? 'true' : 'false'));
 
         if (file_exists($manifest_path)) {
             $manifest = json_decode(file_get_contents($manifest_path), true);
@@ -145,9 +145,7 @@ class AdminMenu {
             }
         } else {
             // Fallback for dev mode or missing build
-            echo '<div class="notice notice-error"><p>BuyGo Core: Assets not found. Please run "npm run build".</p>';
-            echo '<p>Debug: Looking for manifest at: ' . esc_html($manifest_path) . '</p>';
-            echo '<p>Debug: File exists: ' . (file_exists($manifest_path) ? 'Yes' : 'No') . '</p></div>';
+            echo '<div class="notice notice-error"><p>BuyGo Core: Assets not found. Please run "npm run build".</p></div>';
         }
 
         // Pass Data to Frontend
