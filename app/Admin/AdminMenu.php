@@ -100,9 +100,10 @@ class AdminMenu {
             return;
         }
 
-        $root_path = dirname(__DIR__, 2);
-        $manifest_path = $root_path . '/assets/.vite/manifest.json';
-        $plugin_url = plugin_dir_url($root_path . '/buygo-role-permission.php');
+        // 修正路徑計算
+        $plugin_root = dirname(__DIR__, 2); // 回到外掛根目錄
+        $manifest_path = $plugin_root . '/assets/.vite/manifest.json';
+        $plugin_url = plugin_dir_url($plugin_root . '/buygo-role-permission.php');
 
         // Determine Initial Route based on Page Slug
         $current_screen = get_current_screen();
@@ -119,6 +120,10 @@ class AdminMenu {
         } elseif ($current_screen && strpos($current_screen->id, 'messages') !== false) {
             $route = '/messages';
         }
+
+        // 除錯資訊（可以在開發完成後移除）
+        error_log('BuyGo Debug: manifest_path = ' . $manifest_path);
+        error_log('BuyGo Debug: file_exists = ' . (file_exists($manifest_path) ? 'true' : 'false'));
 
         if (file_exists($manifest_path)) {
             $manifest = json_decode(file_get_contents($manifest_path), true);
