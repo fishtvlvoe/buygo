@@ -145,7 +145,9 @@ class AdminMenu {
             }
         } else {
             // Fallback for dev mode or missing build
-             echo '<div class="notice notice-error"><p>BuyGo Core: Assets not found. Please run "npm run build".</p></div>';
+            echo '<div class="notice notice-error"><p>BuyGo Core: Assets not found. Please run "npm run build".</p>';
+            echo '<p>Debug: Looking for manifest at: ' . esc_html($manifest_path) . '</p>';
+            echo '<p>Debug: File exists: ' . (file_exists($manifest_path) ? 'Yes' : 'No') . '</p></div>';
         }
 
         // Pass Data to Frontend
