@@ -517,7 +517,7 @@ class NotificationTemplates {
                     'message' => ''
                 ],
                 'line' => [
-                    'message' => "商品名稱：{product_name}\n價格：NT$ {price}{original_price_section}\n數量：{quantity} 個{category_section}{arrival_date_section}{preorder_date_section}\n\n直接下單連結：\n{product_url}{community_url_section}"
+                    'message' => "商品名稱：{product_name}\n價格：{currency_symbol} {price}{original_price_section}\n數量：{quantity} 個{category_section}{arrival_date_section}{preorder_date_section}\n\n直接下單連結：\n{product_url}{community_url_section}"
                 ]
             ],
             'system_product_publish_failed' => [

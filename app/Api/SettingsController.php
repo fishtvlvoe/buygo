@@ -881,6 +881,16 @@ class SettingsController extends BaseController {
                 'description' => '缺少的必填欄位列表',
                 'example' => '價格、數量'
             ],
+            'currency' => [
+                'label' => '幣別代碼',
+                'description' => '商品的幣別代碼（JPY, USD, TWD, CNY, HKD）',
+                'example' => 'JPY'
+            ],
+            'currency_symbol' => [
+                'label' => '幣別符號',
+                'description' => '商品的幣別符號（¥, $, NT$, ¥, HK$）',
+                'example' => '¥'
+            ],
         ];
 
         // 根據 template_key 過濾相關的變數
@@ -910,7 +920,7 @@ class SettingsController extends BaseController {
                 'helper_assigned' => ['helper_name', 'seller_name', 'link'],
                 // 系統訊息
                 'system_copy_template' => [], // 複製上架訊息通常不需要變數，只是格式範例
-                'system_product_published' => ['product_name', 'price', 'quantity', 'category_section', 'arrival_date_section', 'preorder_date_section', 'product_url', 'community_url_section', 'original_price_section', 'original_price'],
+                'system_product_published' => ['product_name', 'price', 'quantity', 'currency', 'currency_symbol', 'category_section', 'arrival_date_section', 'preorder_date_section', 'product_url', 'community_url_section', 'original_price_section', 'original_price'],
                 'system_product_publish_failed' => ['error_message'],
                 'system_product_data_incomplete' => ['missing_fields'],
             ];

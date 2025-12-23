@@ -241,10 +241,15 @@ class LineWebhookHandler implements LineWebhookHandlerInterface
             $feedUrl = $result['feed_url'] ?? '';
             
             // 準備模板變數
+            $currency = $productData['currency'] ?? 'TWD';
+            $currency_symbol = $this->getCurrencySymbol($currency);
+            
             $template_args = [
                 'product_name' => $productData['name'] ?? '',
                 'price' => number_format($productData['price'] ?? 0),
                 'quantity' => $productData['quantity'] ?? 0,
+                'currency' => $currency,
+                'currency_symbol' => $currency_symbol,
                 'product_url' => '',
                 'community_url' => !empty($feedUrl) ? "\n\n📱 社群貼文連結：\n{$feedUrl}\n\n商品卡片已發送，可以轉發給朋友！" : '',
                 'category_section' => '',
@@ -835,5 +840,21 @@ class LineWebhookHandler implements LineWebhookHandlerInterface
         $message .= "\n\n👉 點擊留言 +1 立刻下單";
         
         return $message;
+    }
+    
+    /**
+     * 取得幣別符號
+     */
+    private function getCurrencySymbol(string $currency): string
+    {
+        $symbols = [
+            'JPY' => '¥',
+            'USD' => '$',
+            'TWD' => 'NT$',
+            'CNY' => '¥',
+            'HKD' => 'HK$',
+        ];
+        
+        return $symbols[$currency] ?? 'NT$';
     }
 }
