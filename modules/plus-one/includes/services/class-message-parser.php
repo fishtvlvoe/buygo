@@ -103,11 +103,55 @@ class BuyGo_Plus_One_Message_Parser {
 	private function parse_line( $line, &$data ) {
 		$line = trim( $line );
 
+		// 幣別識別：日幣：1200 或 台幣：350
+		if ( preg_match( '/(日幣|美金|台幣|人民幣|港幣)\s*[：:]\s*(.+)/u', $line, $matches ) ) {
+			$currency = trim( $matches[1] );
+			$price_string = trim( $matches[2] );
+			
+			// 儲存幣別
+			$currency_map = array(
+				'日幣' => 'JPY',
+				'美金' => 'USD',
+				'台幣' => 'TWD',
+				'人民幣' => 'CNY',
+				'港幣' => 'HKD',
+			);
+			$data['currency'] = isset( $currency_map[ $currency ] ) ? $currency_map[ $currency ] : 'TWD';
+			
+			// 檢查是否包含斜線（多個價格）
+			if ( strpos( $price_string, '/' ) !== false ) {
+				// 多個價格
+				$prices = explode( '/', $price_string );
+				$prices = array_map( 'trim', $prices );
+				
+				$parsed_prices = array();
+				foreach ( $prices as $price_str ) {
+					$temp_data = array();
+					$this->parse_price( $price_str, $temp_data );
+					if ( isset( $temp_data['price'] ) ) {
+						$parsed_prices[] = $temp_data['price'];
+					} else {
+						$parsed_prices[] = 0;
+					}
+				}
+				
+				$data['prices'] = $parsed_prices;
+				$data['price'] = ! empty( $parsed_prices[0] ) ? $parsed_prices[0] : 0;
+			} else {
+				// 單一價格
+				$this->parse_price( $price_string, $data );
+			}
+		}
 		// 價格：350 (支援全形和半形冒號)
 		// 支援格式：價格：350 或 價格：NT$350
 		// 支援多個價格：價格：1000/1200/1500（用斜線分隔，對應多款式商品）
-		if ( preg_match( '/價格\s*[：:]\s*(.+)/u', $line, $matches ) ) {
+		else if ( preg_match( '/價格\s*[：:]\s*(.+)/u', $line, $matches ) ) {
 			$price_string = trim( $matches[1] );
+			
+			// 預設幣別為台幣
+			if ( ! isset( $data['currency'] ) ) {
+				$data['currency'] = 'TWD';
+			}
 			
 			// 檢查是否包含斜線（多個價格）
 			if ( strpos( $price_string, '/' ) !== false ) {
