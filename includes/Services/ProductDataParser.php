@@ -20,8 +20,12 @@ class ProductDataParser
      * 欄位對應的關鍵字
      */
     private const FIELD_PATTERNS = [
+        'currency' => [
+            'patterns' => ['/(日幣|美金|台幣|人民幣|港幣)[：:]/u'],
+            'type' => 'currency',
+        ],
         'price' => [
-            'patterns' => ['/價格[：:]\s*(\d+)/u', '/售價[：:]\s*(\d+)/u', '/NT\$?\s*(\d+)/iu', '/(\d+)\s*元/u'],
+            'patterns' => ['/(?:日幣|美金|台幣|人民幣|港幣|價格|售價)[：:]\s*(\d+)/u', '/NT\$?\s*(\d+)/iu', '/(\d+)\s*元/u', '/原價[：:]\s*(\d+)/u'],
             'type' => 'int',
         ],
         'quantity' => [
@@ -56,6 +60,7 @@ class ProductDataParser
             'name' => null,
             'price' => null,
             'quantity' => null,
+            'currency' => 'TWD', // 預設台幣
             'arrival_date' => null,
             'preorder_date' => null,
             'type' => null,
@@ -195,8 +200,29 @@ class ProductDataParser
         return match ($type) {
             'int' => (int) preg_replace('/[^\d]/', '', $value),
             'date' => $this->parseDate($value),
+            'currency' => $this->parseCurrency($value),
             default => $value,
         };
+    }
+
+    /**
+     * 解析幣別
+     */
+    private function parseCurrency(string $value): string
+    {
+        // 移除前後空白和符號
+        $value = trim($value, " \t\n\r\0\x0B/:：");
+        
+        // 中文轉標準代碼
+        $currencyMap = [
+            '日幣' => 'JPY',
+            '美金' => 'USD',
+            '台幣' => 'TWD',
+            '人民幣' => 'CNY',
+            '港幣' => 'HKD',
+        ];
+        
+        return $currencyMap[$value] ?? 'TWD'; // 預設台幣
     }
 
     /**

@@ -75,6 +75,7 @@ class FluentCartService
             // 儲存 MYGO meta
             $this->saveProductMeta($productId, [
                 '_mygo_line_user_id' => $lineUserId,
+                '_mygo_currency' => $data['currency'] ?? 'TWD',
                 '_mygo_arrival_date' => $data['arrival_date'] ?? '',
                 '_mygo_preorder_date' => $data['preorder_date'] ?? '',
             ]);
