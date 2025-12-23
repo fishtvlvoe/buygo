@@ -214,7 +214,20 @@ class LineWebhookHandler implements LineWebhookHandlerInterface
                 ]);
             }
             
-            $this->sendReply($replyToken, '商品資料不完整，缺少：' . implode('、', $missingNames));
+            
+            $errorMessage = "商品資料不完整，缺少：" . implode('、', $missingNames) . "\n\n";
+            $errorMessage .= "💡 格式範例：\n\n";
+            $errorMessage .= "【台幣商品】\n";
+            $errorMessage .= "商品名稱\n";
+            $errorMessage .= "台幣：350\n";
+            $errorMessage .=" 數量：20\n\n";
+            $errorMessage .= "【日幣商品】\n";
+            $errorMessage .= "商品名稱\n";
+            $errorMessage .= "日幣：1200\n";
+            $errorMessage .= "數量：15\n\n";
+            $errorMessage .= "其他幣別：美金、人民幣、港幣";
+            
+            $this->sendReply($replyToken, $errorMessage);
             return;
         }
 
@@ -719,20 +732,21 @@ class LineWebhookHandler implements LineWebhookHandlerInterface
         $message .= "【步驟 1】先傳送商品圖片\n\n";
         $message .= "【步驟 2】再傳送商品資訊\n";
         $message .= "格式如下：\n\n";
+        $message .= "💡 台幣商品格式：\n";
         $message .= "商品名稱\n";
-        $message .= "價格：299\n";
-        $message .= "數量：10\n";
-        $message .= "到貨：01/25\n";
-        $message .= "（其他說明文字）\n\n";
-        $message .= "━━━━━━━━━━━━━━\n";
-        $message .= "✅ 必填：名稱、價格、數量\n";
-        $message .= "📝 選填：到貨日期、預購截止、類型\n\n";
-        $message .= "💡 範例：\n";
-        $message .= "日本薯條三兄弟\n";
-        $message .= "價格：350\n";
+        $message .= "台幣：350\n";
         $message .= "數量：20\n";
-        $message .= "到貨：01/25\n";
-        $message .= "超好吃限量供應！";
+        $message .= "到貨：01/25\n\n";
+        $message .= "💡 日幣商品格式：\n";
+        $message .= "商品名稱\n";
+        $message .= "日幣：1200\n";
+        $message .= "數量：15\n";
+        $message .= "到貨：01/25\n\n";
+        $message .= "━━━━━━━━━━━━━━\n";
+        $message .= "✅ 必填：名稱、價格（可含幣別）、數量\n";
+        $message .= "📝 選填：到貨日期、預購截止、類型\n";
+        $message .= "💱 支援幣別：台幣、日幣、美金、人民幣、港幣\n";
+        $message .= "（不寫幣別預設為台幣）";
         
         $this->sendReply($replyToken, $message);
     }
