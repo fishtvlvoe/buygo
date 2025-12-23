@@ -560,10 +560,15 @@ class BuyGo_Plus_One_Webhook_Handler {
 		}
 
 		// 準備模板變數
+		$currency = $product_data['currency'] ?? 'TWD';
+		$currency_symbol = $this->get_currency_symbol($currency);
+		
 		$template_args = array(
 			'product_name' => $product_data['name'] ?? '',
 			'price' => $product_data['price'] ?? 0,
 			'quantity' => $product_data['quantity'] ?? 0,
+			'currency' => $currency,
+			'currency_symbol' => $currency_symbol,
 			'product_url' => $product_url,
 			'community_url_section' => $community_url ? "\n\n社群 +1下單連結：\n{$community_url}" : '', // 修正變數名稱：使用 community_url_section
 			'category_section' => ! empty( $product_data['category'] ) ? "分類：{$product_data['category']}" : '', // 移除開頭的換行符，讓用戶可以自己控制格式
@@ -904,6 +909,24 @@ class BuyGo_Plus_One_Webhook_Handler {
 			}
 		}
 		return $names;
+	}
+
+	/**
+	 * 取得幣別符號
+	 *
+	 * @param string $currency 幣別代碼
+	 * @return string
+	 */
+	private function get_currency_symbol( $currency ) {
+		$symbols = array(
+			'JPY' => '¥',
+			'USD' => '$',
+			'TWD' => 'NT$',
+			'CNY' => '¥',
+			'HKD' => 'HK$',
+		);
+		
+		return isset( $symbols[ $currency ] ) ? $symbols[ $currency ] : 'NT$';
 	}
 
 }
